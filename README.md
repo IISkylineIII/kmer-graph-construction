@@ -55,8 +55,5 @@ for node, neighbors in result_graph.items():
 ### Expected Output
 For an input sequence and a k-mer length of 4, the output will list each k-mer and its neighboring k-mers in the graph.
 
-### Contribution
-Feel free to fork the repository and submit pull requests if you want to contribute or improve the project.
-
 ### License
 This project is licensed under the MIT License.
