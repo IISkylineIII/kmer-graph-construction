@@ -34,7 +34,7 @@ for node, neighbors in result_graph.items():
 ### Output Format
 The graph is printed in the format:
 
-<node>: <neighbor1> <neighbor2> ...
+node: neighbor1 neighbor2 ...
 
 ### Dependencies
 This implementation uses only standard Python libraries and requires:
