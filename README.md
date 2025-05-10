@@ -1,59 +1,47 @@
-### kmer-graph-construction
+### De Bruijn Graph Construction
+This repository contains a Python implementation of a De Bruijn graph constructor. The algorithm builds a graph from a DNA sequence based on a given k value, where each node represents a (k-1)-mer and directed edges represent overlapping k-mers.
 
-kmer-graph-construction is a tool designed to build a graph from k-mers extracted from a given DNA sequence. It constructs a De Bruijn graph or any similar graph, where the nodes represent the k-mers, and edges represent overlaps between them. This is useful in tasks such as genome assembly, sequence alignment, and bioinformatics analysis.
+### Code Structure
+The code consists of a single main function:
 
-### Functionality
-Constructs a graph from k-mers by breaking down a DNA sequence into overlapping subsequences of length k.
-Stores each k-mer as a node in the graph, and edges represent overlaps between adjacent k-mers.
+de_bruijn_graph(k, text)
+Constructs a De Bruijn graph from a given DNA string and k-mer length.
 
-### Graph Structure
+### Parameters:
 
-The graph is represented as a dictionary where each k-mer is a key, and its neighboring k-mers (those that overlap by k-1 bases) are stored in a list.
+* k (int): Length of the k-mer.
+* text (str): DNA sequence.
 
-### Example
-Given a sequence like:
+### Returns:
 
-AAAT AATG ACCC ACGC ATAC ATCA ATGC
-
-The tool will construct a graph representing these k-mers and their overlaps.
-
-### Installation
-You can clone or download the repository and run the code directly, or integrate the functions into your bioinformatics pipelines.
-
-### How to Use
-Input: Provide a DNA sequence and the length k for k-mers.
-
-Process: The program will generate the k-mers from the sequence and build the graph.
-
-Output: The resulting graph is a dictionary where keys are k-mers, and values are lists of neighboring k-mers.
+* A dictionary representing the graph. Each key is a (k-1)-mer, and its value is a list of (k-1)-mers that follow it in the sequence.
 
 ### Example Usage
-def de_bruijn_graph(k, text):
-    graph = {}
+```
+# Sample input
+k_value = 12
+input_text = "TCCCGGTGAACAAGTTTTACTGGCC..."
 
-    for i in range(len(text) - k + 1):
-        kmer = text[i:i + k - 1]
-        next_kmer = text[i + 1:i + k]
-
-        if kmer in graph:
-            graph[kmer].append(next_kmer)
-        else:
-            graph[kmer] = [next_kmer]
-
-    return graph
-
-# Sample Input
-k_value = 4
-input_text = "AAATGACCCTGAC"
-
-# Generate k-mer graph
+# Generate the De Bruijn graph
 result_graph = de_bruijn_graph(k_value, input_text)
 
 # Print the result
 for node, neighbors in result_graph.items():
     print(f"{node}: {' '.join(neighbors)}")
-### Expected Output
-For an input sequence and a k-mer length of 4, the output will list each k-mer and its neighboring k-mers in the graph.
+
+```
+
+### Output Format
+The graph is printed in the format:
+
+<node>: <neighbor1> <neighbor2> ...
+Where each line represents the outgoing edges from a (k-1)-mer node.
+
+### Dependencies
+This implementation uses only standard Python libraries and requires:
+Python 3.x
+No external packages are necessary.
 
 ### License
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see the LICENSE file for details.
+
