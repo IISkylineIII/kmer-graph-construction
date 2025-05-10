@@ -35,7 +35,6 @@ for node, neighbors in result_graph.items():
 The graph is printed in the format:
 
 <node>: <neighbor1> <neighbor2> ...
-Where each line represents the outgoing edges from a (k-1)-mer node.
 
 ### Dependencies
 This implementation uses only standard Python libraries and requires:
